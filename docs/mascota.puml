@@ -1,0 +1,46 @@
+@startuml mascota
+
+class Mascota
+class Alimento 
+class Carne
+class Comida 
+class Juguete 
+class Pelota 
+class Animal
+class Baño
+class Jabon
+class Agua
+class Carro
+class Cocina
+class Habitacion
+class Ropa
+class Cama
+class Inodoro 
+class Sentimiento
+class Alegria
+class Tristeza
+class Enfermo 
+class Medicina
+
+Mascota *-- Sentimiento
+Alegria --|> Sentimiento
+Tristeza --|> Sentimiento
+Enfermo --|> Sentimiento
+Mascota o-- Habitacion 
+Habitacion *-- Ropa 
+Habitacion *-- Cama 
+Mascota--|>Animal
+Mascota o-- Juguete
+Mascota o-- Cocina
+Cocina *-- Comida
+Pelota--|> Juguete
+Carro--|> Juguete
+Mascota o-- Baño
+Baño*-- Jabon
+Baño*-- Agua 
+Baño*-- Inodoro
+Baño*-- Medicina 
+Carne--|> Alimento
+Alimento--o Mascota 
+
+@enduml
