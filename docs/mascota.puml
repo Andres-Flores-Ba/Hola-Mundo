@@ -1,46 +1,94 @@
 @startuml mascota
 
-class Mascota
+
+package Alimentos {
 class Alimento 
 class Carne
-class Comida 
+}
+
+package Juguetes {
 class Juguete 
 class Pelota 
-class Animal
-class Baño
+class Carro
+}
+
+package Baño {
+class Baño {
+    -inodoro:Inodoro 
+    -medicina:Medicina 
+    -jabon:Jabon 
+    -agua:Agua 
+}
 class Jabon
 class Agua
-class Carro
-class Cocina
-class Habitacion
-class Ropa
-class Cama
-class Inodoro 
+class Inodoro
+class Medicina
+}
+
+package Sentimientos {
 class Sentimiento
 class Alegria
 class Tristeza
 class Enfermo 
-class Medicina
+}
 
-Mascota *-- Sentimiento
+package Recamara {
+class Habitacion {
+    -ropa:Ropa 
+    -cama:Cama 
+}
+class Ropa
+class Cama
+class Camisa 
+class Gorro 
+class Pantalon 
+}
+
+package Cocina {
+class Comida 
+class Cocina{
+    -comida:Comida 
+}
+}
+
+package Mascota {
+class Mascota {
+    -sentimiento:Sentimiento 
+    +Comer(Alimento)
+    +Bañarse(Baño)
+    +Cocinar(Cocina)
+    +Jugar(Juguetes)
+    +Vestirse(Habitacion)
+}
+class Animal
+}
+
+ 
+
+
+Mascota "1" *-- "1" Sentimiento
 Alegria --|> Sentimiento
 Tristeza --|> Sentimiento
 Enfermo --|> Sentimiento
-Mascota o-- Habitacion 
-Habitacion *-- Ropa 
-Habitacion *-- Cama 
+Mascota "1" o-- "1" Habitacion 
+Habitacion "1" *-- "*" Ropa 
+Habitacion "1" *-- "1" Cama 
+Camisa --|> Ropa 
+Gorro --|> Ropa 
+Pantalon --|> Ropa 
 Mascota--|>Animal
-Mascota o-- Juguete
-Mascota o-- Cocina
-Cocina *-- Comida
+Mascota "1" o-- "1" Juguete
+Mascota "1" o-- "1" Cocina
+Cocina "1" *-- "1" Comida
 Pelota--|> Juguete
 Carro--|> Juguete
-Mascota o-- Baño
-Baño*-- Jabon
-Baño*-- Agua 
-Baño*-- Inodoro
-Baño*-- Medicina 
+Mascota "1" o-- "1" Baño
+Baño "1" *-- "1" Jabon
+Baño "1" *-- "*" Agua 
+Baño "1" *-- "1" Inodoro
+Baño "1" *-- "1" Medicina 
 Carne--|> Alimento
-Alimento--o Mascota 
+Alimento "1" --o "1" Mascota
+Alimento <|-- Comida 
 
 @enduml
