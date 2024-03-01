@@ -1,6 +1,5 @@
 @startuml mascota
 
-
 package Alimentos {
 class Alimento 
 class Carne
