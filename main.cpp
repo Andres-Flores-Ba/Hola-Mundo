@@ -1,20 +1,32 @@
 #include <iostream>
 #include <Mascota.hpp>
 #include <Alimento.hpp>
-using namespace std;
+#include <list>
+//using namespace std;
 
-int main()
+int main(int argc, char const *argv[])
 {
-    Mascota m1;
-    Mascota m2;
+    std::list<Mascota> mascotas;
 
     Alimento a1(5);
     Alimento a2(2);
+    Mascota m1("Firulais");
+    Mascota m2("Coraje");
+
+    mascotas.push_back(m1);
+    mascotas.push_back(m2);
 
     m1.Comer(a1);
     m2.Comer(a2);
 
-    cout<<"Mascota 1 Energia:"<<m1.LeerEnergia()<<endl
-        <<"Mascota 2 Energia:"<<m2.LeerEnergia()<<endl;
+    for (auto &&mascota : mascotas)
+    {
+        std::cout
+            << mascota.Leernombre()
+            <<" : "
+            << mascota.LeerEnergia()
+            << std::endl;
+    }
+
     return 0;
 }
